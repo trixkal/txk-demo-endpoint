@@ -1,6 +1,5 @@
 package com.example.demotxk.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -9,9 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.integration.sftp.session.SftpRemoteFileTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @RestController
 public class DemoTxkController {
@@ -31,13 +27,8 @@ public class DemoTxkController {
         try {
 
             String contentType = "application/octet-stream";
-            String fileName = "herokuFileTest.pdf";
-            String sftpRemoteDirectory = "/";
-            Path filePath = Paths.get(sftpRemoteDirectory + fileName).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
-
-            //System.out.println(remoteFileTemplate.get("ftp://rocmer@localhost/ConfigCloudLocal.txt", null));
-
+            String fileName = "http://www.orimi.com/pdf-test.pdf";
+            Resource resource = new UrlResource("http://www.orimi.com/pdf-test.pdf");
 
             return ResponseEntity.ok()
                     .contentType(MediaType.parseMediaType(contentType))
