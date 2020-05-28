@@ -40,4 +40,24 @@ public class DemoTxkController {
         System.out.println("finish roc");
         return null;
     }
+
+    @GetMapping("/downloadCSVFile")
+    public ResponseEntity<String> downloadCSVFile() {
+        String responseSftp = null;
+        try {
+
+            String contentType = "application/csv";
+            String fileName = "export.csv";
+
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
+                    .body("ffd;fdfddf;ddddd;");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        System.out.println("finish roc");
+        return null;
+    }
 }
